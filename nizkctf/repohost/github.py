@@ -57,10 +57,14 @@ class GitHub(BaseRepoHost):
 
         data = r.json()
 
-        if cls._has_error(data, 'already_exists'):
-            raise APIError("Please visit https://github.com/settings/tokens "
-                           "and make sure you do not already have a personal "
-                           "access token called '%s'" % Settings.ctf_name)
+        try:
+            if cls._has_error(data, 'already_exists'):
+                raise APIError
+        except APIError:
+            print("API Error: Please visit https://github.com/settings/tokens "
+                  "and make sure you do not already have a personal "
+                  "access token called '%s'" % Settings.ctf_name)
+
         cls._raise_for_status(r)
 
         return data['token']
