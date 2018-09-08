@@ -1,7 +1,7 @@
 {
-	"ctf_name": "NIZKCTF upstream",
+	"ctf_name": "SCMPv9{ctf}",
 	"repository_host": "GitHub",
-	"submissions_project": "pwn2winctf/test_submissions",
+	"submissions_project": "SCMP-ctf/SCMPv9submissions",
 
 	"scrypt_ops_limit": 33554432,
 	"scrypt_mem_limit": 1073741824,
