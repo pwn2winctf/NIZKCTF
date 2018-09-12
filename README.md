@@ -12,11 +12,10 @@
 
 3. Todos os membros do time devem clonar o repositório e instalar as dependências:
    ```bash
-   git clone git@github.com:pwn2winctf/NIKCTF.git
-   cd NIKCTF
-   sudo apt-get install libsodium18
-   curl https://bootstrap.pypa.io/get-pip.py | sudo -H python
-   sudo -H python -m pip install -r pip-requirements.txt
+   git clone git@github.com:SCMP-ctf/SCMPv9.git
+   cd SCMPv9
+   sudo apt-get install libsodium23 python-pip3
+   sudo -H python -m pip3 install -r pip-requirements.txt
    ```
    **Note**: Se você estiver usando Ubuntu 14.04, adicione [ppa:elt/libsodium](https://launchpad.net/~elt/+archive/ubuntu/libsodium) no seu sistema para poder instalar o `libsodium18`.
 
