@@ -15,7 +15,7 @@ const Settings = Vue.component('settings', {
     `,
     data: () => ({
         team: Cookies.get('team'),
-        language: Cookies.get('lang') || 'En'
+        language: Cookies.get('lang') || 'Pt'
     }),
     methods: {
         save() {
