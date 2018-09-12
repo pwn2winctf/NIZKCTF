@@ -38,7 +38,7 @@
 
 ## Challenges
 
-Os challenges estão disponíveis em https://pwn2win.github.io.
+Os challenges estão disponíveis em https://scmp-ctf.github.io/SCMPv9.
 
 Se você preferir, pode consultar localmente subindo um servidor usando `./ctf serve`, ou listar os challenges na Interface de Linha de Comando:
 ```bash
