@@ -34,7 +34,7 @@ class Challenge(SerializableDict):
     def path(self):
         return os.path.join(chall_dir, self.id + '.json')
 
-    def description(self, lang='en'):
+    def description(self, lang='pt'):
         # Get from a localized markdown file
         path = os.path.join(chall_dir, '{}.{}.md'.format(self.id, lang))
         if os.path.exists(path):
