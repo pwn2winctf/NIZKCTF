@@ -1,0 +1,1 @@
+Conecte na VPN antes de resolver esse challenge. Você cursou Cálculo como aluno especial, e por isso recebeu o usuário '1' e a senha '123' no sistema acadêmico da graduação (https://progradweb.duckdns.org). Use essas credenciais para se infiltrar no sistema e emita um certificado de conclusão do curso de 'Bacharelado em Hacking de Computadores'.
