@@ -12,7 +12,7 @@
 
 3. Todos os membros do time devem clonar o repositório e instalar as dependências:
    ```bash
-   git clone git@github.com:SCMP-ctf/SCMPv9.git
+   git clone git@github.com:SCMP-ctf/SCMPv9.git ou git clone https://github.com/SCMP-ctf/SCMPv9.git
    cd SCMPv9
    sudo apt-get install libsodium23 python-pip3
    sudo -H python -m pip3 install -r pip-requirements.txt
