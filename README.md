@@ -15,7 +15,7 @@
    git clone git@github.com:SCMP-ctf/SCMPv9.git ou git clone https://github.com/SCMP-ctf/SCMPv9.git
    cd SCMPv9
    sudo apt-get install libsodium23 python-pip3
-   sudo -H python -m pip3 install -r pip-requirements.txt
+   sudo pip3 install -r pip-requirements.txt
    ```
    **Note**: Se você estiver usando Ubuntu 14.04, adicione [ppa:elt/libsodium](https://launchpad.net/~elt/+archive/ubuntu/libsodium) no seu sistema para poder instalar o `libsodium18`.
 
