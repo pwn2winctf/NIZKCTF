@@ -8,7 +8,7 @@ def compute_points(chall, num_solves):
     num_solves = max(1, num_solves)
 
     params = Settings.dynamic_scoring
-    if not params:
+    if not params or 'points' in chall.keys():
         return chall['points']
 
     # Google CTF 2017's formula
