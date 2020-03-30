@@ -63,25 +63,26 @@ class ChallengeIndex(SerializableList):
         return os.path.join(chall_dir, INDEX_FILE)
 
 
-def derive_keypair(salt, flag):
+def derive_keypair(salt, opslimit, memlimit, flag):
     flag = flag.encode('utf-8')
     assert isinstance(salt, bytes)
     assert isinstance(flag, bytes)
-    assert len(salt) == pysodium.crypto_pwhash_scryptsalsa208sha256_SALTBYTES
+    assert len(salt) == pysodium.crypto_pwhash_SALTBYTES
 
-    chall_seed = pysodium.crypto_pwhash_scryptsalsa208sha256(
+    chall_seed = pysodium.crypto_pwhash(
         pysodium.crypto_sign_SEEDBYTES,
         flag,
         salt,
-        Settings.scrypt_ops_limit,
-        Settings.scrypt_mem_limit)
+        opslimit,
+        memlimit,
+        pysodium.crypto_pwhash_ALG_ARGON2ID13)
 
     return pysodium.crypto_sign_seed_keypair(chall_seed)
 
 
 def random_salt():
     return pysodium.randombytes(
-        pysodium.crypto_pwhash_scryptsalsa208sha256_SALTBYTES)
+        pysodium.crypto_pwhash_SALTBYTES)
 
 
 def lookup_flag(flag, chall_id=None):
@@ -95,11 +96,12 @@ def lookup_flag(flag, chall_id=None):
         # try every challenge
         try_challenges = [Challenge(id) for id in Challenge.index()]
 
-    try_salts = set(chall['salt'] for chall in try_challenges)
+    try_params = set((chall['salt'], chall['opslimit'], chall['memlimit'])
+                     for chall in try_challenges)
     pk_chall = {chall['pk']: chall for chall in try_challenges}
 
-    for salt in try_salts:
-        pk, sk = derive_keypair(salt, flag)
+    for salt, opslimit, memlimit in try_params:
+        pk, sk = derive_keypair(salt, opslimit, memlimit, flag)
         match = pk_chall.get(pk)
 
         if match:

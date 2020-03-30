@@ -9,6 +9,8 @@ import codecs
 import argparse
 import getpass
 import base64
+import pysodium
+import traceback
 
 from nizkctf.cli import scoreboard, challenges, news, team, localserver
 from nizkctf.repohost import RepoHost
@@ -144,9 +146,17 @@ def cmd_add_challenge(args):
     salt = input('Salt (empty string for random salt): ').strip()
     if salt == '':
         salt = random_salt()
+    while True:
+        level = input('Pwhash level (interactive, moderate, sensitive): ').strip().upper()
+        try:
+            opslimit = getattr(pysodium, 'crypto_pwhash_argon2id_OPSLIMIT_'+level)
+            memlimit = getattr(pysodium, 'crypto_pwhash_argon2id_MEMLIMIT_'+level)
+            break
+        except:
+            traceback.print_exc()
     flag = input('Flag: ').strip()
 
-    pk, sk = derive_keypair(salt, flag)
+    pk, sk = derive_keypair(salt, opslimit, memlimit, flag)
     chall = Challenge(id=id)
     chall['id'] = id
     chall['title'] = title
@@ -155,6 +165,8 @@ def cmd_add_challenge(args):
         chall['points'] = points
     chall['tags'] = tags
     chall['salt'] = salt
+    chall['opslimit'] = opslimit
+    chall['memlimit'] = memlimit
     chall['pk'] = pk
     chall.save()
 
