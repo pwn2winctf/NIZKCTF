@@ -16,6 +16,6 @@
 	"github_api_endpoint": "https://api.github.com/",
 	"github_ssh_url": "git@github.com:%s.git",
 
-	"gitlab_api_endpoint": "https://gitlab.com/api/v3/",
+	"gitlab_api_endpoint": "https://gitlab.com/api/v4/",
 	"gitlab_ssh_url": "git@gitlab.com:%s.git"
 }

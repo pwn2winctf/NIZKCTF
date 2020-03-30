@@ -30,7 +30,7 @@ class GitLabWebhook(object):
         if payload['object_attributes']['target_branch'] != 'master':
             return None
         # mappings
-        return {"mr_id": payload['object_attributes']['id'],
+        return {"mr_id": payload['object_attributes']['iid'],
                 "source_ssh_url": payload['object_attributes']['source']
                                          ['git_ssh_url'],
                 "source_commit": payload['object_attributes']['last_commit']
@@ -61,7 +61,7 @@ class GitLab(BaseRepoHost):
 
     def fork(self, source):
         r = self.s.post(Settings.gitlab_api_endpoint +
-                        'projects/fork/' + quote_plus(source))
+                        'projects/' + quote_plus(source) + '/fork')
 
         data = r.json()
         if self._has_error(data, 'name', 'has already been taken'):
