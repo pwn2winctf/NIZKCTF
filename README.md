@@ -1,6 +1,6 @@
 # NIZKCTF upstream repository
 
-This is the upstream repository for the Non-Interactive Zero-Knowledge CTF platform, a distributed and openly auditable CTF platform that uses zero-knowledge cryptographic proofs to submit and verify the flags for Capture The Flag competitions. Currently only works from command line, but we are analysing the possibility of a javascript version to have an easier and more friendly interface.
+This is the upstream repository for the Non-Interactive Zero-Knowledge CTF platform, a distributed and openly auditable CTF platform that uses zero-knowledge cryptographic proofs to submit and verify the flags for Capture The Flag competitions. It works from command line, but we also have a [javascript version](https://github.com/pwn2winctf/NIZKCTF-js) to have an easier and more friendly interface.
 
 The paper describing the platform can be found [here](https://arxiv.org/pdf/1708.05844.pdf).
 
